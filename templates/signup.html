@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up - Mental Health Chatbot</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .signup-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .form-control {
+            margin-bottom: 1rem;
+        }
+        .btn-primary {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        .password-container {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1 class="text-center mb-4">Sign Up</h1>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required class="form-control">
+            <input type="email" name="email" placeholder="Email" required class="form-control">
+            <div class="password-container">
+                <input type="password" name="password" placeholder="Password" required class="form-control">
+                <button type="button" class="toggle-password" onclick="togglePassword(this)">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            <div class="password-container">
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required class="form-control">
+                <button type="button" class="toggle-password" onclick="togglePassword(this)">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+        <p class="text-center">Already have an account? <a href="/login">Login</a></p>
+    </div>
+
+    <script>
+        function togglePassword(button) {
+            const passwordInput = button.previousElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>

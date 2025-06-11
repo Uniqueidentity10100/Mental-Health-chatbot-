@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mood Dashboard | Mental Health Assistant</title>
+  <link rel="stylesheet" href="/static/css/dashboard.new.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="dashboard-header">
+      <h1 class="dashboard-title">
+        <i class="fas fa-brain"></i>
+        Mental Health Assistant
+      </h1>
+      <div class="header-actions">
+        <a href="/chat" class="header-button">
+          <i class="fas fa-comment-dots"></i>
+          Chat
+        </a>
+        <a href="/logout" class="header-button">
+          <i class="fas fa-sign-out-alt"></i>
+          Logout
+        </a>
+      </div>
+    </div>
+
+    <div id="moodDataContainer" data-mood-data='{{ mood_data | tojson | safe }}'></div>
+    
+    <div class="mood-stats">
+      <div class="stat-card">
+        <i class="fas fa-smile"></i>
+        <h4>Most Common Mood</h4>
+        <span id="commonMood">Loading...</span>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-calendar-check"></i>
+        <h4>Last Recorded</h4>
+        <span id="lastRecorded">Loading...</span>
+      </div>
+      <div class="stat-card">
+        <i class="fas fa-chart-line"></i>
+        <h4>Mood Trend</h4>
+        <span id="moodTrend">Loading...</span>
+      </div>
+    </div>
+
+    <div class="charts-row">
+      <div class="chart-container">
+        <h3>Mood Trend Over Time</h3>
+        <canvas id="lineChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <h3>Mood Distribution</h3>
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
+    
+    <div class="chart-container full-width">
+      <h3>Mood Analysis</h3>
+      <canvas id="pieChart"></canvas>
+    </div>
+
+    <a href="/chat" class="back-button">
+      <i class="fas fa-arrow-left"></i>
+      Back to Chat
+    </a>
+  </div>
+
+  <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
